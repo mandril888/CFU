@@ -2,7 +2,7 @@ public class ClassCourse {
     private int classId, capacity, studentCount;
     private String title;
 
-    public ClassCourse() {
+    public ClassCourse(int classId, int capacity, int studentCount,  String title) {
         setClassId(classId);
         setCapacity(capacity);
         setStudentCount(studentCount);
