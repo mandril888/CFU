@@ -1,25 +1,33 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+// 1) Por qué usa @Override en la clase PaymentList? --> Mejor poner el @Override
+// 2) Por qué usa List en lugar de ArrayList en TransactionList y PaymentList? -->
+//      No limitas las "transactions" al objeto ArrayList y puedes usar más métodos de List
 
 public class InterfacesAndAbstractClasses {
     public interface TransactionList {
         Transaction getLastTransaction();
         void addTransaction(Transaction transaction);
         Transaction getTransactionByDate(Date date);
-        ArrayList<Transaction> getAllTransactions();
+        List<Transaction> getAllTransactions();
     }
 
     public static class PaymentList implements TransactionList {
-        ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+        List<Transaction> transactions = new ArrayList<Transaction>();
 
+        @Override
         public Transaction getLastTransaction() {
             return transactions.get(transactions.size() - 1);
         }
 
+        @Override
         public void addTransaction(Transaction transaction) {
             transactions.add(transaction);
         }
 
+        @Override
         public Transaction getTransactionByDate(Date date) {
             for(Transaction transaction : transactions) {
                 if (transaction.getDate().equals(date)) {
@@ -30,7 +38,8 @@ public class InterfacesAndAbstractClasses {
             return null;
         }
 
-        public ArrayList<Transaction> getAllTransactions() {
+        @Override
+        public List<Transaction> getAllTransactions() {
             return transactions;
         }
     }
